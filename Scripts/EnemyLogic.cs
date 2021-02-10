@@ -17,7 +17,7 @@ public class EnemyLogic : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
-
+    
     void Update(){
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance <= lookRadius){
