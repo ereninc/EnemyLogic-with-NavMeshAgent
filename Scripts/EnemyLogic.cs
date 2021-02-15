@@ -18,12 +18,11 @@ public class EnemyLogic : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
     
-    void Update(){
+    void FixedUpdate(){
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance <= lookRadius){
             agent.SetDestination(target.position);
             if(distance <= agent.stoppingDistance){
-                //Attack
                 if(PlayerMovement.playerHealth > 0){
                     if(Time.time >= nextTimeToAttack){
                         nextTimeToAttack = Time.time + 1/attackRate;
@@ -32,7 +31,6 @@ public class EnemyLogic : MonoBehaviour
                         PlayerMovement.TakeDamage(damage);
                     }
                 }
-                //Face Target
                 FaceTarget();
             }
         }
